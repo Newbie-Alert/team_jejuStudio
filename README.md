@@ -8,4 +8,6 @@
 
 ### 12.06
 
-- dev에 사진작가 데이터, profile.jsx, profileDetail.jsx 병합
+- dev에 사진작가 데이터, profile.jsx, profileDetail.jsx 병합 ✅
+- 무한스크롤 구현 ✅
+- 작가 매칭
