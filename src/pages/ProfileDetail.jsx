@@ -52,13 +52,14 @@ function ProfileDetail() {
   const settings = {
     // dots: true,
     fade: true,
-    infinite: true,
+    // infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrow: true,
+    arrow: false,
     adaptiveHeight: true,
-    autoplay: true
+    autoplay: true,
+    centerPadding: '0px'
   };
 
   const filteredProfile = data.find((p) => {
@@ -86,7 +87,6 @@ function ProfileDetail() {
           })}
         </Styled_Slide>
       </ProfileBox>
-      <div></div>
     </Container>
   );
 }
