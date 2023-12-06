@@ -16,7 +16,7 @@ export const __getImages = createAsyncThunk(
   'GET_IMAGES',
   async (payload, thunkAPI) => {
     try {
-      const { data } = await axios.get(`https://api.unsplash.com/search/photos?query=couple&page=3&client_id=${config.unsplash.apiKey}`)
+      const { data } = await axios.get(`https://api.unsplash.com/search/photos?query=couple&page=${String(payload)}&client_id=${config.unsplash.apiKey}`)
       return thunkAPI.fulfillWithValue(data.results);
     }
     catch (err) {
@@ -28,9 +28,10 @@ export const __getImages = createAsyncThunk(
 export const __addImages = createAsyncThunk(
   'ADD_IMAGES',
   async (payload, thunkAPI) => {
+    const url = payload + 1;
     try {
-      const images = await axios.get(`https://api.unsplash.com/photos?query=forest&page=${payload}&client_id=${config.unsplash.apiKey}`)
-      return thunkAPI.fulfillWithValue(images.data);
+      const { data } = await axios.get(`https://api.unsplash.com/search/photos?query=couple&page=${String(url)}&client_id=${config.unsplash.apiKey}`)
+      return thunkAPI.fulfillWithValue(data.results);
     }
     catch (err) {
       return thunkAPI.rejectWithValue(err);
