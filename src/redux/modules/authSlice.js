@@ -49,28 +49,28 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(__doSignUp.pending, (state, payload) => {
+      .addCase(__doSignUp.pending, (state, action) => {
         state.isLoading = true;
       })
-      .addCase(__doSignUp.fulfilled, (state, payload) => {
+      .addCase(__doSignUp.fulfilled, (state, action) => {
         state.isLoading = false;
       })
-      .addCase(__doSignUp.rejected, (state, payload) => {
+      .addCase(__doSignUp.rejected, (state, action) => {
         state.isError = true;
-        state.error = payload.error;
+        state.error = action.payload;
       })
 
-      .addCase(__doLogin.pending, (state, payload) => {
+      .addCase(__doLogin.pending, (state, action) => {
         state.isLoading = true;
       })
-      .addCase(__doLogin.fulfilled, (state, payload) => {
+      .addCase(__doLogin.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.user = payload.payload;
-        localStorage.setItem('user', JSON.stringify(payload.payload))
+        state.user = action.payload;
+        localStorage.setItem('user', JSON.stringify(action.payload))
       })
-      .addCase(__doLogin.rejected, (state, payload) => {
+      .addCase(__doLogin.rejected, (state, action) => {
         state.isError = true;
-        state.error = payload;
+        state.error = action.payload;
         state.isLoading = false
       })
   }

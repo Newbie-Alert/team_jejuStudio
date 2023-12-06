@@ -8,6 +8,9 @@ const config = {
       messagingSenderId: process.env.REACT_APP_FB_MESSAGING_SENDER_ID,
       appId: process.env.REACT_APP_FB_API_ID
     }
+  },
+  unsplash: {
+    apiKey: process.env.REACT_APP_UNSPLASH_API_KEY
   }
 }
 
