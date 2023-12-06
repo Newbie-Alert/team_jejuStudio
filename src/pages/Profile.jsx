@@ -9,8 +9,8 @@ const Card = styled.div`
   background-position: center;
   background-size: cover;
   width: 150px;
-  height: 200px;
-  margin-bottom: 50px;
+  height: 190px;
+  margin-bottom: 30px;
   color: black;
   display: flex;
   align-items: end;
@@ -72,12 +72,3 @@ function Profile() {
 }
 
 export default Profile;
-// {
-//   name: '차은우',
-//   category: ['커플', '단체'],
-//   outdoor: true,
-//   area: '애월',
-//   comment: '감성이 가득한 작업물을 만들어드립니다.',
-//   avatar: 차은우,
-//   contact: 'ckdmsdn1@nbc.com'
-// },
