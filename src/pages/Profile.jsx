@@ -45,6 +45,7 @@ const Title = styled.h1`
 `;
 
 function Profile() {
+  console.log(data);
   const navigate = useNavigate();
   return (
     <Container>

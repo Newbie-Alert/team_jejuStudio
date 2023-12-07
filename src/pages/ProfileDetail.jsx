@@ -13,12 +13,12 @@ const ProfileBox = styled.div`
   flex-direction: row;
   gap: 20px;
 `;
-const ProfileImg = styled.div`
+const ProfileImg = styled.img`
   width: 150px;
   height: 190px;
-  background-image: url(${(props) => props.src});
+  /* background-image: url(${(props) => props.src});
   background-position: center;
-  background-size: cover;
+  background-size: cover; */
 `;
 const ProfileCategory = styled.ul`
   font-size: 20px;
@@ -48,7 +48,7 @@ export const Styled_Slide = styled(Slider)`
 `;
 function ProfileDetail() {
   const params = useParams();
-
+  console.log(data);
   const settings = {
     // dots: true,
     fade: true,
@@ -83,6 +83,7 @@ function ProfileDetail() {
         </ProfileInfo>
         <Styled_Slide {...settings}>
           {filteredProfile.works.map((c, idx) => {
+            console.log(c);
             return <img src={c} key={idx} />;
           })}
         </Styled_Slide>
