@@ -1,11 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Profile from '../pages/Profile.jsx';
 import ProfileDetail from '../pages/ProfileDetail.jsx';
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import MainPage from "../pages/MainPage"
-import GlobalStyle from "../globalStyle/GlobalStyle"
-import Question from "../pages/Question/Question"
-import Login from "../pages/Login/Login"
+import MainPage from '../pages/MainPage';
+import GlobalStyle from '../globalStyle/GlobalStyle';
+import Question from '../pages/Question/Question';
+import Login from '../pages/Login/Login';
 
 const Router = () => {
   return (

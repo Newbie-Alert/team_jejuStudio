@@ -57,7 +57,6 @@ export const data = [
     comment: '감성이 가득한 작업물을 만들어드립니다.',
     avatar: 차은우,
     contact: 'ckdmsdn1@nbc.com',
-    // works: [차은우1, 차은우2, 차은우3, 차은우4, 차은우5, 차은우6]
     works: [차은우1, 차은우2, 차은우3, 차은우4, 차은우5, 차은우6]
   },
   {
@@ -69,7 +68,6 @@ export const data = [
     comment: '지금 순간의 본인을 가장 아름답게 남겨드립니다.',
     avatar: 고민시,
     contact: 'rhalstl4@nbc.com',
-    // works: [고민시1, 고민시2, 고민시5, 고민시6, 고민시7, 고민시8]
     works: [고민시1, 고민시2, 고민시5, 고민시6, 고민시7, 고민시8]
   },
   {
@@ -81,7 +79,6 @@ export const data = [
     comment: '사계절이 여름인 듯한 시원한 사진을 찍습니다.',
     avatar: 츄,
     contact: 'rlawldn2@nbc.com',
-    // works: [츄1, 츄2, 츄3, 츄4]
     works: [츄1, 츄2, 츄3, 츄4]
   },
   {
@@ -93,7 +90,6 @@ export const data = [
     comment: '추억의 순간을 가장 아름답게 담아드립니다.',
     avatar: 장도연,
     contact: 'wkdehdus3@nbc.com',
-    // works: [장도연1, 장도연2, 장도연4, 장도연5]
     works: [장도연1, 장도연2, 장도연4, 장도연5]
   },
   {
@@ -105,8 +101,8 @@ export const data = [
     comment: '귀여운 피사체를 사랑합니다.',
     avatar: 이영지,
     contact: 'dldudwl7@nbc.com',
+
     works: [이영지7, 이영지4, 이영지1, 이영지6, 이영지2, 이영지3]
-    // works: [이영지7, 이영지4, 이영지1, 이영지6, 이영지2, 이영지3]
   },
   {
     id: 5,
@@ -117,7 +113,6 @@ export const data = [
     comment: '함께 있을 때가 가장 멋진 순간을 담아드립니다.',
     avatar: 키,
     contact: 'zl4@nbc.com',
-    // works: [키1, 키2, 키3, 키4]
     works: [키1, 키2, 키3, 키4]
   },
   {
@@ -129,7 +124,6 @@ export const data = [
     comment: '누구보다 귀여운 가족을 찍어드립니다.',
     avatar: 주우재,
     contact: 'wndnwo6@nbc.com',
-    // works: [주우재1, 주우재2, 주우재3, 주우재4, 주우재5, 주우재6]
     works: [주우재1, 주우재2, 주우재3, 주우재4, 주우재5, 주우재6]
   },
 
@@ -142,7 +136,6 @@ export const data = [
     comment: '함께 있을 때가 가장 멋진 순간을 담아드립니다.',
     avatar: 서지수,
     contact: 'tjwltn8@nbc.com',
-    // works: [서지수1, 서지수3, 서지수4, 서지수5]
     works: [서지수1, 서지수3, 서지수4, 서지수5]
   }
 ];
