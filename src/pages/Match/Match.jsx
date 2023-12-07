@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { FadeAnimation } from '../../globalStyle/GlobalAnimation';
 import Skeleton from '../../components/skeleton/Skeleton';
 
