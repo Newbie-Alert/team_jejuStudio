@@ -93,7 +93,6 @@ export default function Login() {
   const doLogin = () => {
     const { email, password } = postBody;
     dispatch(__doLogin({ email, password }));
-    if (!!localStorage.getItem('question')) navi('/photographer');
 
     if (isError === true) {
       Toast.fire({
@@ -113,7 +112,13 @@ export default function Login() {
         title: '로그인 성공',
         timer: 1500
       }).then((value) => {
-        value.isDismissed && naviTo('/');
+        if (value.isDismissed) {
+          if (!!localStorage.getItem('question')) {
+            navi('/matching');
+          } else {
+            navi('/');
+          }
+        }
       });
     }
   };

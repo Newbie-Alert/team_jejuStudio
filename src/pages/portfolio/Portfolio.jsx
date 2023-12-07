@@ -17,7 +17,6 @@ const InfiniteGrid = styled.div`
   display: grid;
   gap: 3rem;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-flow: dense;
 
   & div:nth-child(odd) {
     width: 100%;

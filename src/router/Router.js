@@ -6,6 +6,7 @@ import GlobalStyle from "../globalStyle/GlobalStyle"
 import Question from "../pages/Question/Question"
 import Login from "../pages/Login/Login"
 import Portfolio from '../pages/portfolio/Portfolio.jsx';
+import Match from '../pages/Match/Match.jsx';
 
 const Router = () => {
   return (
@@ -19,6 +20,7 @@ const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/photogrpher" element={<Login />} />
         <Route path="/portfolio" element={<Portfolio />} />
+        <Route path='/matching' element={<Match />}></Route>
       </Routes>
     </BrowserRouter>
   );

@@ -1,11 +1,11 @@
-import 차은우 from '../assets/차은우.JPG';
-import 츄 from '../assets/츄.JPG';
-import 장도연 from '../assets/장도연.JPG';
-import 키 from '../assets/키.JPG';
-import 고민시 from '../assets/고민시.JPG';
-import 서지수 from '../assets/서지수.JPG';
-import 주우재 from '../assets/주우재.JPG';
-import 이영지 from '../assets/이영지.JPG';
+import 차은우 from './assets/차은우.JPG';
+import 츄 from './assets/츄.JPG';
+import 장도연 from './assets/장도연.JPG';
+import 키 from './assets/키.JPG';
+import 고민시 from './assets/고민시.JPG';
+import 서지수 from './assets/서지수.JPG';
+import 주우재 from './assets/주우재.JPG';
+import 이영지 from './assets/이영지.JPG';
 export const data = [
   {
     id: 1,
