@@ -62,6 +62,7 @@ const QuestionProgressBarPercent = styled.div`
 export default function Question() {
   const [progress, setProgress] = useState(-100);
   const [count, setCount] = useState(0);
+
   return (
     <QuestionContainer>
       <QuestionHeader>

@@ -1,3 +1,4 @@
+
 // import 츄1 from '/assets/chu/우정사진(츄).JPG';
 // import 츄2 from '/assets/chu/우정사진2(츄).JPG';
 // import 츄3 from '/assets/chu/우정사진3(츄).JPG';
@@ -32,6 +33,7 @@
 // import 서지수3 from '/assets/seo/우정사진(서지수).JPG';
 // import 서지수4 from '/assets/seo/우정사진2(서지수).JPG';
 // import 서지수5 from '/assets/seo/우정사진3(서지수).JPG';
+
 
 export const data = [
   {
