@@ -1,6 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 function Header() {
+  const navi = useNavigate('/question');
+  const navigateTo = (path) => {
+    navi(path);
+  };
+
   return (
     <StContainer>
       <BrandTitle>
@@ -14,8 +20,8 @@ function Header() {
         </StHeader>
         <StHeader>
           <StHeaderButton>
-            <button>예약하기</button>
-            <button>작가소개</button>
+            <button onClick={() => navigateTo('/question')}>예약하기</button>
+            <button onClick={() => navigateTo('/profile')}>작가소개</button>
             <button>장소추천</button>
           </StHeaderButton>
         </StHeader>

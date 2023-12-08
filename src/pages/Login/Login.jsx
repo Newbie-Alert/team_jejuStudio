@@ -66,22 +66,21 @@ export default function Login() {
   };
 
   const doSignUp = () => {
-    try {
-      dispatch(__doSignUp({ email: postBody.email, password: postBody.password }));
-      if (isError === false) {
-        Toast.fire({
-          icon: 'success',
-          title: '회원가입 완료'
-        });
-        setIsSignUp(false);
-        setPostBody((prev) => ({
-          ...prev,
-          id: '',
-          password: '',
-          nickname: ''
-        }));
-      }
-    } catch (err) {
+    dispatch(__doSignUp({ email: postBody.email, password: postBody.password }));
+    if (isError === false) {
+      Toast.fire({
+        icon: 'success',
+        title: '회원가입 완료'
+      });
+      setIsSignUp(false);
+      setPostBody((prev) => ({
+        ...prev,
+        id: '',
+        password: '',
+        nickname: ''
+      }));
+    }
+    if (isError === true) {
       Toast.fire({
         icon: 'error',
         title: error?.message,
@@ -93,14 +92,7 @@ export default function Login() {
   const doLogin = () => {
     const { email, password } = postBody;
     dispatch(__doLogin({ email, password }));
-
-    if (isError === true) {
-      Toast.fire({
-        icon: 'error',
-        title: error.message,
-        text: '로그인 실패'
-      });
-    } else {
+    if (isError === false) {
       setPostBody((prev) => ({
         ...prev,
         email: '',
@@ -119,6 +111,13 @@ export default function Login() {
             navi('/');
           }
         }
+      });
+    }
+    if (isError === true) {
+      Toast.fire({
+        icon: 'error',
+        title: '로그인 실패',
+        text: '아이디 또는 패스워드를 확인하세요'
       });
     }
   };

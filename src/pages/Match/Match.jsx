@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FadeAnimation } from '../../globalStyle/GlobalAnimation';
 import Skeleton from '../../components/skeleton/Skeleton';
+import { useNavigate } from 'react-router';
 
 const MatchingContainer = styled.div`
   width: 100%;
-  padding: 0.5rem 3rem;
+  padding: 0.5rem 6rem;
   background-image: linear-gradient(#fff, transparent);
   @media screen and (max-width: 800px) {
     padding: 0.5rem 1rem;
@@ -62,6 +63,16 @@ const SelectList = styled.ul`
   }
 `;
 
+const ListStyle = styled.li`
+  padding: 0.5rem 1rem 0.6rem;
+  width: fit-content;
+  height: fit-content;
+  background-color: #5bc3ebff;
+  border-radius: 15px;
+  border-top-right-radius: 3px;
+  color: white;
+`;
+
 const MatchingArtistSection = styled.section`
   width: 100%;
   padding: 1rem 5rem;
@@ -94,8 +105,9 @@ const ArtistCard = styled.div`
   max-width: 370px;
   margin: 0 auto;
   padding: 1.25rem;
-  background-color: #1d1d1d;
-  color: white;
+  border: 2px solid #5bc3ebff;
+  background: linear-gradient(220deg, rgba(91, 195, 235, 1) 40%, rgba(0, 0, 0, 0) 25%);
+  color: #111111;
   border-radius: 6px;
   display: flex;
   flex-direction: column;
@@ -150,7 +162,7 @@ const Category = styled.li.attrs((props) => ({
   key: `${props.$key}`
 }))`
   width: fit-content;
-  color: ${(props) => (props.$isSelect === props.children ? 'yellow' : 'white')};
+  color: ${(props) => (props.$isSelect === props.children ? '#1fa1d4' : '#1d1d1d')};
 `;
 
 const ArtistNameSection = styled.div`
@@ -161,7 +173,8 @@ const ArtistNameSection = styled.div`
 
 const ArtistArea = styled.h4`
   width: fit-content;
-  color: ${(props) => (props.$isSelect === props.children ? 'yellow' : 'white')};
+  color: ${(props) => (props.$isSelect === props.children ? '#1fa1d4' : '#1d1d1d')};
+  font-weight: 900;
 `;
 
 const ContentBox = styled.div`
@@ -178,9 +191,9 @@ export default function Match() {
   const [photographer, setPhotographer] = useState();
   const userPick = JSON.parse(localStorage.getItem('question'));
   const userDataArr = [...Object.values(userPick)];
-  const matchingList = [];
   const [isLoading, setIsLoading] = useState(true);
   const tempArr = [1, 2, 3, 4];
+  const navi = useNavigate();
 
   const getData = async () => {
     const artistData = await axios.get('http://localhost:8080/photographer');
@@ -189,6 +202,7 @@ export default function Match() {
   };
 
   const matching = async () => {
+    const matchingList = [];
     // 작가들의 데이터를 돌면서 카테고리와 지역에 관한 데이터를 매칭
     // 일치하는 데이터가 있으면 count를 증가 후 그 작가의 데이터에 추가
     const artist = await getData();
@@ -197,6 +211,7 @@ export default function Match() {
 
     for (let i = 0; i < artist.length; i++) {
       // 8번 진행
+      console.log(matchPoint);
       artist[i].area === userDataArr[2] ? (matchPoint += 1) : (matchPoint += 0); // 지역이 일치하면 point 1점
       for (let j = 0; j < artist[i].category.length; j++) {
         // 아티스트의 카테고리 요소 수 만큼
@@ -206,7 +221,10 @@ export default function Match() {
       setPhotographer(matchingList);
     }
   };
-  console.log(photographer?.sort((a, b) => a.point - b.point));
+
+  const navigateToDetail = (artistId) => {
+    navi(`/detail/${artistId}`);
+  };
 
   const timer = () => {
     setTimeout(() => {
@@ -232,7 +250,7 @@ export default function Match() {
             {userDataArr.map((el, i) => {
               return (
                 <>
-                  <li key={i}>{el}</li>
+                  <ListStyle key={i}>{el}</ListStyle>
                 </>
               );
             })}
@@ -254,7 +272,7 @@ export default function Match() {
               .slice(0, 4)
               .map((artist) => {
                 return (
-                  <ArtistCard key={artist.id}>
+                  <ArtistCard key={artist.id} onClick={() => navigateToDetail(artist.id)}>
                     <ArtistImgBox>
                       <ArtistImg $url={artist.avatar} alt="" />
                     </ArtistImgBox>
@@ -268,7 +286,7 @@ export default function Match() {
                           <CategoryList>
                             {artist.category.map((el, i) => {
                               return (
-                                <Category $key={i} $isSelect={userDataArr[0]}>
+                                <Category key={i} $isSelect={userDataArr[0]}>
                                   {el}
                                 </Category>
                               );

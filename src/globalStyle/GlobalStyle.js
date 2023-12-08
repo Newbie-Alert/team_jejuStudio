@@ -1,6 +1,28 @@
 import { createGlobalStyle } from 'styled-components'
+import NotoSansKrBold from '../fonts/NotoSansKR-Bold.ttf'
+import NotoSansKrMedium from '../fonts/NotoSansKR-Medium.ttf'
+import NotoSansKrRegular from '../fonts/NotoSansKR-Regular.ttf'
 
 const GlobalStyle = createGlobalStyle`
+@font-face {
+        font-family: 'NotoSansKr-Bold';
+        src: local('NotoSansKr-Bold'), local('NotoSansKr-Bold');
+        font-style: normal;
+        src: url(${NotoSansKrBold}) format('truetype');
+  }
+  @font-face {
+        font-family: 'NotoSansKr-Medium';
+        src: local('NotoSansKr-Medium'), local('NotoSansKr-Medium');
+        font-style: normal;
+        src: url(${NotoSansKrMedium}) format('truetype');
+  }
+  @font-face {
+        font-family: 'NotoSansKr-Regular';
+        src: local('NotoSansKr-Regular'), local('NotoSansKr-Regular');
+        font-style: normal;
+        src: url(${NotoSansKrRegular}) format('truetype');
+  }
+
   html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -57,6 +79,7 @@ table {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: NotoSansKr-Regular;
   }
 }
 `

@@ -14,19 +14,19 @@ const MapContainer = styled.div`
 export default function MainPage() {
   return (
     <div>
-      <stContainer>
+      <StContainer>
         <Header />
         <MainBanner />
         <Introduction />
         <MapContainer>
           <KAKAO />
         </MapContainer>
-      </stContainer>
+      </StContainer>
     </div>
   );
 }
 
-const stContainer = styled.div`
+const StContainer = styled.div`
   width: 100%;
   height: 100%;
   align-items: center;

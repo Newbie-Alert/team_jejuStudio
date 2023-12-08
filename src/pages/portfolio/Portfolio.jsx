@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { __addImages, __getImages } from '../../redux/modules/imageSlice';
 import styled from 'styled-components';
@@ -7,8 +7,7 @@ import { FadeAnimation } from '../../globalStyle/GlobalAnimation';
 const InfiniteContainer = styled.div`
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(#1d1d1d, transparent);
-  padding: 1rem 3rem;
+  padding: 3rem 12rem;
 `;
 
 const InfiniteGrid = styled.div`
@@ -46,9 +45,8 @@ const InfiniteGrid = styled.div`
 export default function Portfolio() {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
-  const { images, isLoading, isError, error } = useSelector((state) => state.imageSlice);
+  const { images } = useSelector((state) => state.imageSlice);
 
-  console.log(images);
   useEffect(() => {
     try {
       dispatch(__getImages(page));
@@ -68,9 +66,7 @@ export default function Portfolio() {
   const onScrollHandler = () => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
       setPage(page + 1);
-      console.log(page);
       loadMoreImages();
-      console.log(images);
     } else {
       return;
     }
@@ -89,8 +85,17 @@ export default function Portfolio() {
       <InfiniteGrid>
         {images?.map((img) => {
           return (
-            <div key={img.id}>
-              <img src={img.urls.full} alt="" style={{ width: '100%', imageResolution: 'revert' }} />
+            <div
+              key={img.id}
+              style={{
+                border: '1px solid #eee',
+                height: 'fit-content',
+                padding: '1rem',
+                backgroundColor: 'white',
+                background: `linear-gradient(220deg, rgba(0, 0, 0, 0) 85%, rgba(91, 195, 235, 1) 25%), linear-gradient(30deg, rgba(0, 0, 0, 0) 85%, rgba(91, 195, 235, 1) 25%)`
+              }}
+            >
+              <img src={img.urls.full} alt="" style={{ width: '100%' }} />
             </div>
           );
         })}

@@ -2,6 +2,7 @@ import React from 'react';
 import { data } from '../shared/fakedata';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router';
+import { FadeAnimation } from '../globalStyle/GlobalAnimation';
 
 const Card = styled.div`
   padding: 10px;
@@ -14,6 +15,7 @@ const Card = styled.div`
   color: black;
   display: flex;
   align-items: end;
+  animation: ${FadeAnimation} 0.5s ease;
 `;
 const CardContainer = styled.div`
   display: grid;

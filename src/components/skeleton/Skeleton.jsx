@@ -34,8 +34,13 @@ const CompFade = keyframes`
   }
 `;
 
+const PaddingWrapper = styled.div`
+  width: 100%;
+  padding: 0 3rem;
+`;
+
 const SkeletonBox = styled.div`
-  width: 80%;
+  width: 100%;
   height: fit-content;
   padding: 1rem;
   background-color: #1f1f1f;
@@ -81,14 +86,16 @@ const SkeletonParagraph = styled.div`
 export default function Skeleton() {
   const lineArr = Array(3);
   return (
-    <SkeletonBox>
-      <SkeletonTitle />
-      <NameContainer></NameContainer>
-      <PragraphContainer>
-        {[...lineArr].map((el, i) => {
-          return <SkeletonParagraph key={i} />;
-        })}
-      </PragraphContainer>
-    </SkeletonBox>
+    <PaddingWrapper>
+      <SkeletonBox>
+        <SkeletonTitle />
+        <NameContainer></NameContainer>
+        <PragraphContainer>
+          {[...lineArr].map((el, i) => {
+            return <SkeletonParagraph key={i} />;
+          })}
+        </PragraphContainer>
+      </SkeletonBox>
+    </PaddingWrapper>
   );
 }

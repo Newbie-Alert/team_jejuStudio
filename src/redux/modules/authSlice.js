@@ -30,13 +30,15 @@ export const __doLogin = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const { email, password } = payload
+      console.log(payload);
       const res = await signInWithEmailAndPassword(auth, email, password);
+      console.log(res);
       const { accessToken, uid } = res.user
       const data = { accessToken, uid }
       return thunkAPI.fulfillWithValue(data)
     }
     catch (err) {
-      return thunkAPI.rejectWithValue(err)
+      return thunkAPI.rejectWithValue(err.code)
     }
   }
 )
