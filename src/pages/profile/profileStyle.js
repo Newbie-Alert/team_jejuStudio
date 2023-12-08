@@ -25,6 +25,7 @@ export const CardContainer = styled.div`
   @media screen and (max-width: 600px) {
     grid-template-columns: repeat(1, 1fr);
   }
+  margin-bottom: 200px;
 `;
 export const TextBox = styled.div`
   display: flex;
@@ -43,6 +44,15 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  //배경임시로 넣어놓긴 했으나 버려도 괜춘합니다
+  background: rgb(166, 230, 254);
+
+  background: linear-gradient(
+    333deg,
+    rgba(166, 230, 254, 1) 0%,
+    rgba(201, 242, 255, 1) 17%,
+    rgba(252, 252, 252, 1) 52%
+  );
 `;
 export const Title = styled.h1`
   margin: 80px;

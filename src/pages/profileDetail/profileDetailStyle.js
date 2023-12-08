@@ -45,6 +45,14 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: rgb(166, 230, 254);
+  //배경임시로 넣어놓긴 했으나 버려도 괜춘합니다
+  background: linear-gradient(
+    333deg,
+    rgba(166, 230, 254, 1) 0%,
+    rgba(201, 242, 255, 1) 17%,
+    rgba(252, 252, 252, 1) 52%
+  );
 `;
 export const ContentContainer = styled.div`
   display: flex;
@@ -62,7 +70,7 @@ export const Title = styled.h1`
 export const Line = styled.div`
   margin: 10px 0px;
   width: 50px;
-  border: 2px solid lightgray;
+  border: 2px solid #c9f2ff;
   border-radius: 5px;
 `;
 export const Works = styled.div`
@@ -72,11 +80,11 @@ export const Works = styled.div`
 `;
 export const WorksImg = styled.img`
   display: inline-block;
-  border: 1px solid lightgray;
+  border: 1px solid #c9f2ff;
   margin: 0;
   margin-bottom: 30px;
   padding: 10px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  /* box-shadow: 2px 2px 5px #5bc3eb; */
   width: 380px;
   &:hover {
     transform: scale(1.1, 1.1);
@@ -91,7 +99,7 @@ export const Btn = styled.button`
   border: none;
   border-bottom: 1px solid gray;
   color: gray;
-  width: 150px;
+  width: 120px;
   &:hover {
     color: black;
   }

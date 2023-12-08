@@ -16,11 +16,11 @@ export const Styled_Slide = styled(Slider)`
 
   .slick-list {
     width: 800px;
-    margin-top: 20px;
-    margin: 20 -30px; // space(여백)/-2
+
+    margin: 20px -30px 100px -30px; // space(여백)/-2
   }
   .slick-dots {
-    bottom: 20px;
+    bottom: 120px;
   }
   .slick-dots li.slick-active button:before {
     color: white;
@@ -73,7 +73,7 @@ function ProfileDetail() {
   const filteredProfile = data.find((p) => {
     return String(p.id) == params.id;
   });
-  const [workVersion, setWorkVersion] = useState(true);
+  const [workVersion, setWorkVersion] = useState(false);
   return (
     <St.Container>
       <St.ContentContainer>
@@ -89,13 +89,13 @@ function ProfileDetail() {
               })}
               <St.Line />
               <p>{filteredProfile.comment}</p>
-              <p>contact:{filteredProfile.contact}</p>
+              <p>contact : {filteredProfile.contact}</p>
               <St.Btn
                 onClick={() => {
                   setWorkVersion(!workVersion);
                 }}
               >
-                {workVersion ? '작업물 슬라이드로 보기' : '작업물 그리드로 보기'}
+                {workVersion ? '슬라이드로 보기' : '작업물 한번에 보기'}
               </St.Btn>
             </St.ProfileCategory>
           </St.ProfileInfo>
