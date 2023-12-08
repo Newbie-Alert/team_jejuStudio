@@ -47,6 +47,6 @@ const MainBannerContainer = styled.div`
   flex-direction: column;
 `;
 const StWrapper = styled.div`
-  width: 80%;
+  width: 100%;
   height: 80%;
 `;
