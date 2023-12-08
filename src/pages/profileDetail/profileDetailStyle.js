@@ -20,14 +20,14 @@ export const ProfileImg = styled.div`
   background-size: cover;
 `;
 export const ProfileCategory = styled.ul`
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 500;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 7px;
 
   & span {
-    font-size: 17px;
+    font-size: 20px;
     font-weight: 700;
     margin-bottom: 5px;
   }
@@ -37,7 +37,7 @@ export const ProfileCategory = styled.ul`
 `;
 export const ProfileInfo = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 20px;
 `;
 
 export const Container = styled.div`
@@ -78,6 +78,12 @@ export const WorksImg = styled.img`
   padding: 10px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   width: 380px;
+  &:hover {
+    transform: scale(1.1, 1.1);
+    transition-duration: 0.3s;
+  }
+  transition-duration: 0.2s;
+  background-color: white;
 `;
 export const Btn = styled.button`
   background-color: transparent;

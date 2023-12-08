@@ -50,9 +50,9 @@ export const data = [
       '/assets/chu/우정사진(츄).JPG',
       '/assets/chu/우정사진2(츄).JPG',
       '/assets/chu/우정사진3(츄).JPG',
-      '/assets/chu/행사사진(츄).JPG',
-      '/assets/cha/행사사진(차은우).JPG',
-      '/assets/cha/행사사진2(차은우).JPG'
+      '/assets/chu/개인사진1(추.JPG',
+      '/assets/chu/행사사진2(츄).JPG',
+      '/assets/chu/행사사진(츄).JPG'
     ]
   },
   {
@@ -70,13 +70,14 @@ export const data = [
       '/assets/jang/행사사진(장도연).JPG',
       '/assets/jang/행사사진2(장도연).JPG',
       '/assets/cha/행사사진(차은우).JPG',
-      '/assets/cha/행사사진2(차은우).JPG'
+      '/assets/cha/행사사진2(차은우).JPG',
+      '/assets/jang/개인사진(장도연).JPG'
     ]
   },
   {
     id: 7,
     name: '이영지',
-    category: ['반려동물사진', '아이사진'],
+    category: ['반려동물사진', '아이사진', '개인사진'],
     outdoor: true,
     area: '협재',
     comment: '귀여운 피사체를 사랑합니다.',
@@ -84,18 +85,21 @@ export const data = [
     contact: 'dldudwl7@nbc.com',
 
     works: [
+      '/assets/lee/개인사진2(이영지).JPG',
       '/assets/lee/반려동물(이영지).jpg',
+
       '/assets/lee/반려동물2(이영지).jpg',
       '/assets/lee/반려동물3(이영지).jpg',
       '/assets/lee/반려동물4(이영지).jpg',
       '/assets/lee/아이사진2(이영지).JPG',
-      '/assets/lee/아이사진3(이영지).JPG'
+      '/assets/lee/아이사진3(이영지).JPG',
+      '/assets/lee/개인사진(이영지).JPG'
     ]
   },
   {
     id: 5,
     name: '키',
-    category: ['가족사진', '단체사진', '우정사진'],
+    category: ['가족사진', '단체사진', '우정사진', '반려동물사진'],
     outdoor: true,
     area: '애월',
     comment: '함께 있을 때가 가장 멋진 순간을 담아드립니다.',
@@ -105,7 +109,12 @@ export const data = [
       '/assets/key/가족사진(키).JPG',
       '/assets/key/가족사진1(키).JPG',
       '/assets/key/개인사진(키).JPG',
-      '/assets/key/우정사진(키).JPG'
+      '/assets/key/우정사진(키).JPG',
+      '/assets/go/반려동물4(고민시).jpg',
+      '/assets/go/반려동물5(고민시).jpg',
+      '/assets/joo/반려동물(주우재).jpg',
+      '/assets/joo/반려동물2(주우재).jpg',
+      '/assets/joo/반려동물3(주우재).jpg'
     ]
   },
   {
@@ -123,7 +132,9 @@ export const data = [
       '/assets/joo/반려동물3(주우재).jpg',
       '/assets/joo/반려동물4(주우재).jpg',
       '/assets/joo/반려동물5(주우재).jpg',
-      '/assets/joo/반려동물6(주우재).jpg'
+      '/assets/joo/반려동물6(주우재).jpg',
+      '/assets/lee/아이사진2(이영지).JPG',
+      '/assets/lee/아이사진3(이영지).JPG'
     ]
   },
 
@@ -140,7 +151,11 @@ export const data = [
       '/assets/seo/개인사진(서지수).JPG',
       '/assets/seo/우정사진(서지수).JPG',
       '/assets/seo/우정사진2(서지수).JPG',
-      '/assets/seo/우정사진3(서지수).JPG'
+      '/assets/seo/우정사진3(서지수).JPG',
+      '/assets/key/가족사진(키).JPG',
+      '/assets/key/가족사진1(키).JPG',
+      '/assets/chu/우정사진(츄).JPG',
+      '/assets/chu/우정사진2(츄).JPG'
     ]
   }
 ];

@@ -10,15 +10,49 @@ import 'slick-carousel/slick/slick-theme.css';
 import * as St from './profileDetailStyle';
 
 export const Styled_Slide = styled(Slider)`
+  .slick-slide {
+    padding: 0 30px; // space(여백)/2
+  }
+
   .slick-list {
     width: 800px;
     margin-top: 20px;
+    margin: 20 -30px; // space(여백)/-2
   }
   .slick-dots {
     bottom: 20px;
   }
+  .slick-dots li.slick-active button:before {
+    color: white;
+    font-size: 12px;
+  }
+
+  .slick-dots li button:before {
+    color: white;
+  }
+  .slick-prev {
+    z-index: 1;
+    left: 30px;
+  }
+
+  .slick-next {
+    right: 40px;
+  }
+
+  .slick-prev:before,
+  .slick-next:before {
+    font-size: 30px;
+    opacity: 0.5;
+    color: white;
+  }
+
   & img {
     height: 400px;
+    &:hover {
+      transform: scale(1.1, 1.1);
+      transition-duration: 0.3s;
+    }
+    transition-duration: 0.2s;
   }
 `;
 function ProfileDetail() {
