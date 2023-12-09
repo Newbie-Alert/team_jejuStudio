@@ -72,7 +72,6 @@ const OverlayImgBox = styled.div`
 `;
 
 export default function KAKAO() {
-  const [isOpen, setIsOpen] = useState(false);
   const [modal, setModal] = useState(['성산', '애월', '협재', '서귀포']);
   const [clicked, setClicked] = useState();
   const [current, setCurrent] = useState();

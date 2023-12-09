@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { __doLogin, __doSignUp } from '../../redux/modules/authSlice';
 import * as St from './styles';
 import { Toast } from './styles';
 import { useNavigate } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
-import { __doLogin, __doSignUp } from '../../redux/modules/authSlice';
 
 export default function Login() {
+  // REDUX STATES
+  const { isError, error } = useSelector((state) => state.authSlice);
+
   // STATES
   const [isSignUp, setIsSignUp] = useState(false);
   const [isPassed, setIsPassed] = useState(false);
@@ -15,17 +18,9 @@ export default function Login() {
     nickname: ''
   });
 
-  // REDUX STATES
-  const { isError, error } = useSelector((state) => state.authSlice);
-
   // HOOKS
   const dispatch = useDispatch();
   const navi = useNavigate();
-
-  // Functions
-  const naviTo = (path) => {
-    navi(path);
-  };
 
   const handleChange = (e) => {
     // Validate Input by length
@@ -92,13 +87,14 @@ export default function Login() {
   const doLogin = () => {
     const { email, password } = postBody;
     dispatch(__doLogin({ email, password }));
+    if (isError === true) {
+      Toast.fire({
+        icon: 'error',
+        title: 'err',
+        text: '로그인 실패'
+      });
+    }
     if (isError === false) {
-      setPostBody((prev) => ({
-        ...prev,
-        email: '',
-        password: '',
-        nickname: ''
-      }));
       Toast.fire({
         icon: 'success',
         title: '로그인 성공',
@@ -112,13 +108,12 @@ export default function Login() {
           }
         }
       });
-    }
-    if (isError === true) {
-      Toast.fire({
-        icon: 'error',
-        title: '로그인 실패',
-        text: '아이디 또는 패스워드를 확인하세요'
-      });
+      setPostBody((prev) => ({
+        ...prev,
+        email: '',
+        password: '',
+        nickname: ''
+      }));
     }
   };
 
@@ -136,7 +131,7 @@ export default function Login() {
             가입하기
           </St.LoginButton>
         ) : (
-          <St.LoginButton onClick={doLogin} onChange={handleChange} $isPass={isPassed} $to={'login'}>
+          <St.LoginButton onClick={() => doLogin()} onChange={handleChange} $isPass={isPassed} $to={'login'}>
             로그인
           </St.LoginButton>
         )}
