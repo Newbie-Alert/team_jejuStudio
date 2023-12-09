@@ -54,6 +54,11 @@ export default function Map() {
     setModalImageUrl(null);
   };
 
+  const goToLink = () => {
+    window.location.href = "예약 설문조사";
+    closeModal();
+  };
+
   return (
     <MapContainer>
       <h1>이런 곳은 어떤가요?</h1>
@@ -61,6 +66,7 @@ export default function Map() {
         <div id="map" style={{ width: "100%", height: "100%" }}></div>
       </MapWrapper>
       {modalImageUrl && <Modal imageUrl={modalImageUrl} closeModal={closeModal} />}
+      <button onClick={goToLink}>예약하기</button>
     </MapContainer>
   );
 }
