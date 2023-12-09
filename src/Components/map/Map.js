@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { markerdata } from "../data/markerData";
 
@@ -15,27 +15,43 @@ const MapWrapper = styled.div`
   height: 600px;
 `;
 
+const Modal = ({ imageUrl, closeModal }) => {
+  return (
+    <div className="modal">
+      <div className="modal-content">
+        <span className="close" onClick={closeModal}>&times;</span>
+        <img src={imageUrl} alt="Marker" />
+      </div>
+    </div>
+  );
+};
+
 export default function Map() {
+  const [modalImageUrl, setModalImageUrl] = useState(null);
+
   useEffect(() => {
     mapscript();
   }, []);
 
   const mapscript = () => {
-    let container = document.getElementById("map");
-    let options = {
-      center: new window.kakao.maps.LatLng(33.375842577023796, 126.5447226734622),
-      level: 9,
-    };
-
-    const map = new window.kakao.maps.Map(container, options);
+    // your existing mapscript logic
+    // ...
 
     markerdata.forEach((el) => {
-      new window.kakao.maps.Marker({
+      const marker = new window.kakao.maps.Marker({
         map: map,
         position: new window.kakao.maps.LatLng(el.lat, el.lng),
         title: el.title,
       });
+
+      window.kakao.maps.event.addListener(marker, "click", () => {
+        setModalImageUrl(el.imageUrl);
+      });
     });
+  };
+
+  const closeModal = () => {
+    setModalImageUrl(null);
   };
 
   return (
@@ -44,6 +60,7 @@ export default function Map() {
       <MapWrapper>
         <div id="map" style={{ width: "100%", height: "100%" }}></div>
       </MapWrapper>
+      {modalImageUrl && <Modal imageUrl={modalImageUrl} closeModal={closeModal} />}
     </MapContainer>
   );
 }
