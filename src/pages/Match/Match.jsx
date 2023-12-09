@@ -268,9 +268,9 @@ export default function Match() {
         <MatchingArtistSection>
           <ArtistGrid>
             {photographer
-              .sort((a, b) => b.point - a.point)
-              .slice(0, 4)
-              .map((artist) => {
+              ?.sort((a, b) => b.point - a.point)
+              ?.slice(0, 4)
+              ?.map((artist) => {
                 return (
                   <ArtistCard key={artist.id} onClick={() => navigateToDetail(artist.id)}>
                     <ArtistImgBox>
