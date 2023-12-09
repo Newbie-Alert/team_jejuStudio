@@ -196,7 +196,7 @@ export default function Match() {
   const navi = useNavigate();
 
   const getData = async () => {
-    const artistData = await axios.get('http://localhost:8080/photographer');
+    const artistData = await axios.get('https://abrupt-meowing-inch.glitch.me/photographer');
     const artistArr = artistData.data;
     return artistArr;
   };
