@@ -3,6 +3,7 @@ import NotoSansKrBold from '../fonts/NotoSansKR-Bold.ttf'
 import NotoSansKrMedium from '../fonts/NotoSansKR-Medium.ttf'
 import NotoSansKrRegular from '../fonts/NotoSansKR-Regular.ttf'
 
+
 const GlobalStyle = createGlobalStyle`
 @font-face {
         font-family: 'NotoSansKr-Bold';
@@ -81,7 +82,11 @@ table {
     box-sizing: border-box;
     font-family: NotoSansKr-Regular;
   }
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
-`
+`;
 
-export default GlobalStyle
+export default GlobalStyle;

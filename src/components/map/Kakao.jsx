@@ -7,12 +7,10 @@ const Wrap = styled.div`
   left: 0;
   bottom: 40px;
   width: 288px;
-  height: 132px;
   margin-left: -144px;
   text-align: left;
   overflow: hidden;
   font-size: 12px;
-  font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
   line-height: 1.5;
   display: ${(props) => (props.$current !== props.id ? 'display:block' : 'display:none')};
 `;
@@ -117,7 +115,8 @@ export default function KAKAO() {
       style={{
         // 지도의 크기
         width: '70%',
-        height: '400px'
+        height: '300px',
+        marginBlock: '2rem'
       }}
       level={10} // 지도의 확대 레벨
     >

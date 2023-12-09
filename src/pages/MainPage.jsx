@@ -1,9 +1,9 @@
 import React from 'react';
 import KAKAO from '../components/map/Kakao';
 import styled from 'styled-components';
-import Header from '../components/Layout/Header';
 import Introduction from '../components/home/Introduction';
 import MainBanner from '../components/home/MainBanner';
+import Header from '../components/Layout/Header';
 
 const MapContainer = styled.div`
   width: 100%;
