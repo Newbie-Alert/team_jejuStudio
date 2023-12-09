@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Swal from "sweetalert2";
+import { FadeAnimation } from "../../globalStyle/GlobalAnimation";
 
 export const Toast = Swal.mixin({
   toast: true,
@@ -15,6 +16,7 @@ export const Toast = Swal.mixin({
 
 const LoginPageBody = styled.div`
   padding-top: 4.1rem;
+  animation: ${FadeAnimation} 0.5s forwards;
 `;
 
 const LoginContainer = styled.div`

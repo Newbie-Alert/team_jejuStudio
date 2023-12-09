@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
@@ -58,7 +58,11 @@ table {
     margin: 0;
     box-sizing: border-box;
   }
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
-`
+`;
 
-export default GlobalStyle
+export default GlobalStyle;

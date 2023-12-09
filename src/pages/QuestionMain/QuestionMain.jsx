@@ -150,16 +150,7 @@ export default function QuestionMain({ setProgress, count, setCount }) {
   const questions = [
     {
       question: '어떤 사진 촬영을 원하시나요?',
-      list: [
-        '개인 프로필 사진',
-        '개인 사진',
-        '가족 사진',
-        '아이 사진',
-        '커플 사진',
-        '우정 사진',
-        '반려동물 사진',
-        '기타'
-      ]
+      list: ['개인 프로필 사진', '개인 사진', '가족 사진', '아이 사진', '커플 사진', '우정 사진', '반려동물 사진']
     },
     {
       question: '촬영 희망일을 선택해주세요',
@@ -277,7 +268,7 @@ export default function QuestionMain({ setProgress, count, setCount }) {
           </UserAnswer>
         )}
 
-        {/* 2번 질문 */}
+        {/* 3번 질문 */}
         {count === 2 && (
           <>
             <QuestionTitle>{questions[2].question}</QuestionTitle>
@@ -300,6 +291,8 @@ export default function QuestionMain({ setProgress, count, setCount }) {
             {count === 3 && <CancelBtn onClick={onCancel}>취소</CancelBtn>}
           </UserAnswer>
         )}
+
+        {/*세 개의 질문에 답변하면 로그인 유도*/}
         {count === 3 && (
           <ConfirmToLogin onClick={onLogin}>
             <h3>로그인 후 진행하기</h3>
