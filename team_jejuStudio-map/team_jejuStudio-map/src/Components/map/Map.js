@@ -1,8 +1,19 @@
 import React, { useEffect } from "react";
+import styled from "styled-components";
 import { markerdata } from "../data/markerData";
 
+const MapContainer = styled.div`
+  text-align: center;
+  padding: 20px;
+  background: #f0f0f0;
+`;
 
-  
+const MapWrapper = styled.div`
+  width: 100%;
+  max-width: 1400px; 
+  margin: 0 auto;
+  height: 600px;
+`;
 
 export default function Map() {
   useEffect(() => {
@@ -16,21 +27,23 @@ export default function Map() {
       level: 9,
     };
 
-    //map
     const map = new window.kakao.maps.Map(container, options);
-    
+
     markerdata.forEach((el) => {
-      // 마커를 생성합니다
       new window.kakao.maps.Marker({
-        //마커가 표시 될 지도
         map: map,
-        //마커가 표시 될 위치
         position: new window.kakao.maps.LatLng(el.lat, el.lng),
-        //마커에 hover시 나타날 title
         title: el.title,
       });
     });
   };
 
-  return <div id="map" style={{ width: "1400px", height: "800px" }}></div>;
+  return (
+    <MapContainer>
+      <h1>이런 곳은 어떤가요?</h1>
+      <MapWrapper>
+        <div id="map" style={{ width: "100%", height: "100%" }}></div>
+      </MapWrapper>
+    </MapContainer>
+  );
 }
