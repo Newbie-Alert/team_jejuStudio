@@ -34,6 +34,7 @@ export const CardContainer = styled.div`
   @media screen and (max-width: 600px) {
     grid-template-columns: repeat(1, 1fr);
   }
+  margin-bottom: 100px;
 `;
 
 export const TextBox = styled.div`
@@ -55,6 +56,13 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 750px;
+  background: linear-gradient(
+    333deg,
+    rgba(166, 230, 254, 1) 0%,
+    rgba(201, 242, 255, 1) 17%,
+    rgba(252, 252, 252, 1) 52%
+  );
   justify-content: center;
   animation: ${FadeAnimation} 0.5s forwards;
 `;

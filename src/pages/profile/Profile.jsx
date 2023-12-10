@@ -40,6 +40,10 @@ function Profile() {
                 $photoCategory={photoCategory}
                 key={category}
               >
+                <St.TextBox>
+                  <p>{p.name} 작가</p>
+                </St.TextBox>
+              </St.Card>
                 {category}
               </St.CategoryBtn>
             );

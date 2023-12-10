@@ -3,32 +3,22 @@ import 'slick-carousel/slick/slick-theme.css';
 import styled from 'styled-components';
 import { FadeAnimation } from '../../globalStyle/GlobalAnimation';
 
-export const ProfileBox = styled.div`
-  display: flex;
-  flex-direction: row;
-
-  gap: 20px;
-  @media screen and (max-width: 850px) {
-    flex-direction: column;
-    align-items: center;
-  }
-`;
 export const ProfileImg = styled.div`
-  width: 200px;
-  height: 250px;
+  width: 150px;
+  height: 180px;
   background-image: url(${(props) => props.src});
   background-position: center;
   background-size: cover;
 `;
 export const ProfileCategory = styled.ul`
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 500;
   display: flex;
   flex-direction: column;
   gap: 7px;
 
   & span {
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 700;
     margin-bottom: 5px;
   }
@@ -38,16 +28,19 @@ export const ProfileCategory = styled.ul`
 `;
 export const ProfileInfo = styled.div`
   display: flex;
+  flex-direction: row;
   gap: 20px;
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background: rgb(166, 230, 254);
-  //배경임시로 넣어놓긴 했으나 버려도 괜춘합니다
+  min-height: 900px;
   background: linear-gradient(
     333deg,
     rgba(166, 230, 254, 1) 0%,
@@ -76,9 +69,18 @@ export const Line = styled.div`
   border-radius: 5px;
 `;
 export const Works = styled.div`
+  width: 1000px;
   column-width: 300px;
   column-gap: 15px;
-  margin: 20px 0px 20px 45px;
+  margin: 20px 0;
+  @media screen and (max-width: 1000px) {
+    width: 650px;
+    column-width: 230px;
+  }
+  @media screen and (max-width: 700px) {
+    width: 300px;
+    column-width: 180px;
+  }
 `;
 export const WorksImg = styled.img`
   display: inline-block;
@@ -86,8 +88,7 @@ export const WorksImg = styled.img`
   margin: 0;
   margin-bottom: 30px;
   padding: 10px;
-  /* box-shadow: 2px 2px 5px #5bc3eb; */
-  width: 380px;
+  width: 300px;
   &:hover {
     transform: scale(1.1, 1.1);
     transition-duration: 0.3s;
@@ -95,6 +96,7 @@ export const WorksImg = styled.img`
   transition-duration: 0.2s;
   background-color: white;
 `;
+
 export const Btn = styled.button`
   background-color: transparent;
   cursor: pointer;
