@@ -10,7 +10,7 @@ function KakaoChatting() {
   };
   return (
     <>
-      <img src="assets/KaKao.png" onClick={handleOpenNewTab}></img>
+      <img src="/assets/KaKao.png" onClick={handleOpenNewTab}></img>
     </>
   );
 }

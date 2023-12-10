@@ -16,11 +16,19 @@ export const Styled_Slide = styled(Slider)`
 
   .slick-list {
     width: 800px;
+    @media screen and (max-width: 1000px) {
+      width: 600px;
+      height: 300px;
+    }
+    @media screen and (max-width: 700px) {
+      width: 400px;
+      height: 200px;
+    }
 
-    margin: 20px -30px 100px -30px; // space(여백)/-2
+    margin: 20px -30px 20px -30px; // space(여백)/-2
   }
   .slick-dots {
-    bottom: 120px;
+    bottom: 40px;
   }
   .slick-dots li.slick-active button:before {
     color: white;
@@ -48,6 +56,12 @@ export const Styled_Slide = styled(Slider)`
 
   & img {
     height: 400px;
+    @media screen and (max-width: 1000px) {
+      height: 300px;
+    }
+    @media screen and (max-width: 700px) {
+      height: 200px;
+    }
     &:hover {
       transform: scale(1.1, 1.1);
       transition-duration: 0.3s;
@@ -79,27 +93,25 @@ function ProfileDetail() {
       <St.ContentContainer>
         <St.Title>{filteredProfile.name}</St.Title>
 
-        <St.ProfileBox>
-          <St.ProfileInfo>
-            <St.ProfileImg src={filteredProfile.avatar} />
-            <St.ProfileCategory>
-              <span>전문분야</span>
-              {filteredProfile.category.map((c, idx) => {
-                return <li key={idx}>{c}</li>;
-              })}
-              <St.Line />
-              <p>{filteredProfile.comment}</p>
-              <p>contact : {filteredProfile.contact}</p>
-              <St.Btn
-                onClick={() => {
-                  setWorkVersion(!workVersion);
-                }}
-              >
-                {workVersion ? '슬라이드로 보기' : '작업물 한번에 보기'}
-              </St.Btn>
-            </St.ProfileCategory>
-          </St.ProfileInfo>
-        </St.ProfileBox>
+        <St.ProfileInfo>
+          <St.ProfileImg src={filteredProfile.avatar} />
+          <St.ProfileCategory>
+            <span>전문분야</span>
+            {filteredProfile.category.map((c, idx) => {
+              return <li key={idx}>{c}</li>;
+            })}
+            <St.Line />
+            <p>{filteredProfile.comment}</p>
+            <p>contact : {filteredProfile.contact}</p>
+            <St.Btn
+              onClick={() => {
+                setWorkVersion(!workVersion);
+              }}
+            >
+              {workVersion ? '슬라이드로 보기' : '작업물 한번에 보기'}
+            </St.Btn>
+          </St.ProfileCategory>
+        </St.ProfileInfo>
         {workVersion ? (
           <St.Works>
             {filteredProfile.works.map((c, idx) => {

@@ -87,7 +87,6 @@ export const data = [
     works: [
       '/assets/lee/개인사진2(이영지).JPG',
       '/assets/lee/반려동물(이영지).jpg',
-
       '/assets/lee/반려동물2(이영지).jpg',
       '/assets/lee/반려동물3(이영지).jpg',
       '/assets/lee/반려동물4(이영지).jpg',

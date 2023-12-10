@@ -58,7 +58,6 @@ function Profile() {
               >
                 <St.TextBox>
                   <p>{p.name} 작가</p>
-                  {/* <p>{p.category[0]}</p> */}
                 </St.TextBox>
               </St.Card>
             );

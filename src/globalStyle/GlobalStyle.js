@@ -1,8 +1,7 @@
-import { createGlobalStyle } from 'styled-components'
-import NotoSansKrBold from '../fonts/NotoSansKR-Bold.ttf'
-import NotoSansKrMedium from '../fonts/NotoSansKR-Medium.ttf'
-import NotoSansKrRegular from '../fonts/NotoSansKR-Regular.ttf'
-
+import { createGlobalStyle } from 'styled-components';
+import NotoSansKrBold from '../fonts/NotoSansKR-Bold.ttf';
+import NotoSansKrMedium from '../fonts/NotoSansKR-Medium.ttf';
+import NotoSansKrRegular from '../fonts/NotoSansKR-Regular.ttf';
 
 const GlobalStyle = createGlobalStyle`
 @font-face {
