@@ -1,63 +1,34 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import * as St from './MapStyles'
 import { markerdata } from "../data/markerData";
 
-const MapContainer = styled.div`
-  width: 80%;
-  margin: auto;
-  text-align: center;
-  padding: 20px;
-  background: #f0f0f0;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-`;
-
-const MapWrapper = styled.div`
-  width: 100%;
-  max-width: 1280px; 
-  margin: 0 auto;
-  height: 550px;
-`;
-
-const ModalContainer = styled.div`
-  width: 100%;
-  & img {
-    max-width: 100%;
-  }
-`
-
-const RecommendTitleSection = styled.div`
-  width: 100%;
-  padding: 2rem;
-  text-align: center;
-  font-size: 2rem;
-  background-color: #5bc3ebff;
-  font-weight: 600;
-  color: white;
-`;
 
 
-
+// MODAL COMPONENT
 const Modal = ({ imageUrl, closeModal }) => {
   return (
-    <ModalContainer className="modal">
+    <St.ModalContainer className="modal">
       <div className="modal-content">
         <span className="close" onClick={closeModal}></span>
         <img src={imageUrl} alt="Marker" />
       </div>
-    </ModalContainer>
+    </St.ModalContainer>
   );
 };
 
 
+// MAIN COMPONENT
 export default function Map() {
+  // STATE
   const [modalImageUrl, setModalImageUrl] = useState(null);
 
+  // USE EFFECT
   useEffect(() => {
     mapscript();
   }, []);
 
+  // FUNCTIONS
+  //지도를 그립니다
   const mapscript = () => {
     let container = document.getElementById("map");
     let options = {
@@ -80,21 +51,23 @@ export default function Map() {
     });
   };
 
+  // 모달 제어
   const closeModal = () => {
     setModalImageUrl(null);
   };
 
+  // MAIN RETURN
   return (
     <>
-      <RecommendTitleSection>
+      <St.RecommendTitleSection>
         <h1>이런 곳은 어떠신가요?</h1>
-      </RecommendTitleSection>
-      <MapContainer>
-        <MapWrapper>
+      </St.RecommendTitleSection>
+      <St.MapContainer>
+        <St.MapWrapper>
           <div id="map" style={{ width: "100%", height: "100%" }}></div>
-        </MapWrapper>
+        </St.MapWrapper>
         {modalImageUrl && <Modal imageUrl={modalImageUrl} closeModal={closeModal} />}
-      </MapContainer>
+      </St.MapContainer>
     </>
 
   );

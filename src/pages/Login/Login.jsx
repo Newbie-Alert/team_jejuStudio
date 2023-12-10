@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { __doLogin, __doSignUp } from '../../redux/modules/authSlice';
 import * as St from './styles';
 import { Toast } from './styles';
@@ -22,6 +22,7 @@ export default function Login() {
   const dispatch = useDispatch();
   const navi = useNavigate();
 
+  // FUNCTIONS
   const handleChange = (e) => {
     // Validate Input by length
     const { email, password, nickname } = postBody;
@@ -39,7 +40,7 @@ export default function Login() {
       }
     }
 
-    // set Input by name
+    // Set Input by name
     const { target } = e;
     switch (target.name) {
       case 'email':
@@ -56,10 +57,12 @@ export default function Login() {
     }
   };
 
+  // 회원가입 창 || 로그인 창 토글
   const toggleSignUp = () => {
     setIsSignUp((prev) => !prev);
   };
 
+  // SIGN UP
   const doSignUp = () => {
     dispatch(__doSignUp({ email: postBody.email, password: postBody.password }));
     if (isError === false) {
@@ -84,6 +87,7 @@ export default function Login() {
     }
   };
 
+  // LOGIN
   const doLogin = () => {
     const { email, password } = postBody;
     dispatch(__doLogin({ email, password }));
@@ -117,6 +121,7 @@ export default function Login() {
     }
   };
 
+  // MAIN RETURN
   return (
     <St.LoginPageBody>
       <St.LoginContainer>

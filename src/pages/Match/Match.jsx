@@ -1,206 +1,32 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { FadeAnimation } from '../../globalStyle/GlobalAnimation';
+import * as St from './MatchStyles';
 import Skeleton from '../../components/skeleton/Skeleton';
 import { useNavigate } from 'react-router';
 
-const MatchingContainer = styled.div`
-  width: 100%;
-  padding: 0.5rem 6rem;
-  background-image: linear-gradient(#fff, transparent);
-  @media screen and (max-width: 800px) {
-    padding: 0.5rem 1rem;
-  }
-  @media screen and (max-width: 600px) {
-    padding: 0.5rem;
-  }
-`;
-
-const MatchingUserSection = styled.section`
-  width: 100%;
-  padding: 1rem 3rem;
-  text-align: center;
-  @media screen and (max-width: 800px) {
-    padding: 1.5rem;
-  }
-  @media screen and (max-width: 600px) {
-    padding: 0.5rem;
-  }
-`;
-
-const MatchingUserTitle = styled.h3`
-  width: 100%;
-  font-weight: 600;
-  font-size: 1.65rem;
-  margin-block: 0.5rem;
-  @media screen and (max-width: 800px) {
-    font-size: 1.25rem;
-  }
-  @media screen and (max-width: 600px) {
-    font-size: 1.2rem;
-  }
-`;
-
-const UserSelectedList = styled.div`
-  width: 100%;
-  border-bottom: 1px solid #121212;
-`;
-
-const SelectList = styled.ul`
-  width: 100%;
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-  font-size: 1.5rem;
-  margin-block: 1rem;
-  margin-bottom: 1.5rem;
-  @media screen and (max-width: 800px) {
-    font-size: 1.25rem;
-  }
-  @media screen and (max-width: 800px) {
-    font-size: 1rem;
-  }
-`;
-
-const ListStyle = styled.li`
-  padding: 0.5rem 1rem 0.6rem;
-  width: fit-content;
-  height: fit-content;
-  background-color: #5bc3ebff;
-  border-radius: 15px;
-  border-top-right-radius: 3px;
-  color: white;
-`;
-
-const MatchingArtistSection = styled.section`
-  width: 100%;
-  padding: 1rem 5rem;
-  @media screen and (max-width: 1600px) {
-    padding: 1rem 3rem;
-  }
-  @media screen and (max-width: 1300px) {
-    padding: 1rem 1rem;
-  }
-`;
-
-const ArtistGrid = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  @media screen and (max-width: 1600px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @media screen and (max-width: 1200px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media screen and (max-width: 800px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
-`;
-
-const ArtistCard = styled.div`
-  width: 100%;
-  max-width: 370px;
-  margin: 0 auto;
-  padding: 1.25rem;
-  border: 2px solid #5bc3ebff;
-  background: linear-gradient(220deg, rgba(91, 195, 235, 1) 40%, rgba(0, 0, 0, 0) 25%);
-  color: #111111;
-  border-radius: 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  font-size: 1rem;
-  animation: ${FadeAnimation} 0.5s;
-  transition: all 0.2s ease;
-  cursor: pointer;
-
-  &:hover {
-    transform: translateY(-1.5%);
-  }
-`;
-
-const ArtistImgBox = styled.div`
-  width: 100%;
-  height: 400px;
-`;
-
-const ArtistImg = styled.img.attrs((props) => ({
-  src: props.$url
-}))`
-  width: 100%;
-  height: 100%;
-  border-radius: 9px;
-  object-fit: cover;
-`;
-
-const ArtistIntroBox = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  font-weight: 600;
-  white-space: normal;
-  line-height: 1.5;
-`;
-
-const CategoryBox = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const CategoryList = styled.ul.attrs((props) => ({
-  key: props.$key
-}))`
-  display: flex;
-  gap: 0.5rem;
-`;
-
-const Category = styled.li.attrs((props) => ({
-  key: `${props.$key}`
-}))`
-  width: fit-content;
-  color: ${(props) => (props.$isSelect === props.children ? '#1fa1d4' : '#1d1d1d')};
-`;
-
-const ArtistNameSection = styled.div`
-  width: 100%;
-  text-align: right;
-  font-size: 2rem;
-`;
-
-const ArtistArea = styled.h4`
-  width: fit-content;
-  color: ${(props) => (props.$isSelect === props.children ? '#1fa1d4' : '#1d1d1d')};
-  font-weight: 900;
-`;
-
-const ContentBox = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  & h3 {
-    font-size: 1.25rem;
-  }
-`;
-
 export default function Match() {
+  // STATES
   const [photographer, setPhotographer] = useState();
-  const userPick = JSON.parse(localStorage.getItem('question'));
-  const userDataArr = [...Object.values(userPick)];
   const [isLoading, setIsLoading] = useState(true);
-  const tempArr = [1, 2, 3, 4];
+
+  // HOOKS
   const navi = useNavigate();
 
+  // VARIABLES
+  const userPick = JSON.parse(localStorage.getItem('question'));
+  const userDataArr = [...Object.values(userPick)];
+  const tempArr = [1, 2, 3, 4];
+
+  // FUNCTIONS
+
+  // 사진작가 데이터 fetch
   const getData = async () => {
     const artistData = await axios.get('https://abrupt-meowing-inch.glitch.me/photographer');
     const artistArr = artistData.data;
     return artistArr;
   };
 
+  // 작가 데이터와 유저의 데이터를 비교하여 접점이 많은 작가 추출
   const matching = async () => {
     const matchingList = [];
     // 작가들의 데이터를 돌면서 카테고리와 지역에 관한 데이터를 매칭
@@ -222,93 +48,104 @@ export default function Match() {
     }
   };
 
+  // 작가 상세페이지로 이동
   const navigateToDetail = (artistId) => {
     navi(`/detail/${artistId}`);
   };
 
+  // 메인으로 이동
+  const navigateHome = () => {
+    navi('/', { replace: true });
+  };
+
+  // 3초 딜레이 후 작가 리스트 등장
   const timer = () => {
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
   };
 
+  // USE EFFECT
   useEffect(() => {
-    matching();
-    timer();
+    matching(); // 작가 데이터 fetch 후 매칭 진행
+    timer(); // 3초 후 결과 등장
 
     return () => {
-      clearTimeout(timer);
+      clearTimeout(timer); // timer 제거
     };
   }, []);
 
   return (
-    <MatchingContainer>
-      <MatchingUserSection>
-        <MatchingUserTitle>고객님의 요청과 가장 잘 맞는 사진 작가를 찾았습니다.</MatchingUserTitle>
-        <UserSelectedList>
-          <SelectList>
+    <St.MatchingContainer>
+      <St.MatchingUserSection>
+        <St.MatchingUserTitle>고객님의 요청과 가장 잘 맞는 사진 작가를 찾았습니다.</St.MatchingUserTitle>
+        <St.UserSelectedList>
+          <St.SelectList>
             {userDataArr.map((el, i) => {
               return (
                 <>
-                  <ListStyle key={i}>{el}</ListStyle>
+                  <St.ListStyle key={i}>{el}</St.ListStyle>
                 </>
               );
             })}
-          </SelectList>
-        </UserSelectedList>
-      </MatchingUserSection>
+          </St.SelectList>
+        </St.UserSelectedList>
+      </St.MatchingUserSection>
       {isLoading && (
-        <ArtistGrid>
+        <St.ArtistGrid>
           {tempArr.map((_, i) => {
             return <Skeleton key={i} />;
           })}
-        </ArtistGrid>
+        </St.ArtistGrid>
       )}
+
+      {/* 매칭 된 작가 리스트 */}
       {!isLoading && (
-        <MatchingArtistSection>
-          <ArtistGrid>
+        <St.MatchingArtistSection>
+          <St.ArtistGrid>
             {photographer
               ?.sort((a, b) => b.point - a.point)
               ?.slice(0, 4)
               ?.map((artist) => {
                 return (
-                  <ArtistCard key={artist.id} onClick={() => navigateToDetail(artist.id)}>
-                    <ArtistImgBox>
-                      <ArtistImg $url={artist.avatar} alt="" />
-                    </ArtistImgBox>
-                    <ArtistIntroBox>
-                      <ArtistNameSection>
+                  <St.ArtistCard key={artist.id} onClick={() => navigateToDetail(artist.id)}>
+                    <St.ArtistImgBox>
+                      <St.ArtistImg $url={artist.avatar} alt="" />
+                    </St.ArtistImgBox>
+                    <St.ArtistIntroBox>
+                      <St.ArtistNameSection>
                         <h4>{artist.name}</h4>
-                      </ArtistNameSection>
-                      <ContentBox>
+                      </St.ArtistNameSection>
+                      <St.ContentBox>
                         <h3>전문 분야</h3>
-                        <CategoryBox>
-                          <CategoryList>
+                        <St.CategoryBox>
+                          <St.CategoryList>
                             {artist.category.map((el, i) => {
                               return (
-                                <Category key={i} $isSelect={userDataArr[0]}>
+                                <St.Category key={i} $isSelect={userDataArr[0]}>
                                   {el}
-                                </Category>
+                                </St.Category>
                               );
                             })}
-                          </CategoryList>
-                        </CategoryBox>
-                        <ContentBox></ContentBox>
+                          </St.CategoryList>
+                        </St.CategoryBox>
+                        <St.ContentBox></St.ContentBox>
                         <h3>지역</h3>
-                        <ArtistArea $isSelect={userDataArr[2]}>{artist.area}</ArtistArea>
-                      </ContentBox>
+                        <St.ArtistArea $isSelect={userDataArr[2]}>{artist.area}</St.ArtistArea>
+                      </St.ContentBox>
 
-                      <ContentBox>
+                      <St.ContentBox>
                         <h3>작가 소개</h3>
                         <h4> {artist.comment}</h4>
-                      </ContentBox>
-                    </ArtistIntroBox>
-                  </ArtistCard>
+                      </St.ContentBox>
+                    </St.ArtistIntroBox>
+                  </St.ArtistCard>
                 );
               })}
-          </ArtistGrid>
-        </MatchingArtistSection>
+          </St.ArtistGrid>
+        </St.MatchingArtistSection>
       )}
-    </MatchingContainer>
+      <St.HomeBtn onClick={() => navigateHome()}>Home</St.HomeBtn>
+    </St.MatchingContainer>
   );
 }

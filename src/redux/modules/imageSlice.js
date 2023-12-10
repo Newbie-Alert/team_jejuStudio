@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios";
 import config from "../../config";
 
-
+// INITIAL STATE
 const initialState = {
   images: [],
   isLoading: false,
@@ -10,8 +10,7 @@ const initialState = {
   error: null,
 }
 
-// https://api.unsplash.com/photos?page=1&client_id=
-
+// THUNK FUNCTIONS
 export const __getImages = createAsyncThunk(
   'GET_IMAGES',
   async (payload, thunkAPI) => {
@@ -39,6 +38,8 @@ export const __addImages = createAsyncThunk(
   }
 )
 
+
+// SLICE
 const imageSlice = createSlice({
   name: 'imageSlice',
   initialState,
@@ -46,6 +47,7 @@ const imageSlice = createSlice({
 
   },
   extraReducers: (builder) => {
+    // GET IMAGES
     builder
       .addCase(__getImages.pending, (state) => {
         state.isLoading = true;
@@ -60,7 +62,7 @@ const imageSlice = createSlice({
         state.error = action.payload
       })
 
-      // addImages
+      // ADD IMAGES
       .addCase(__addImages.pending, (state) => {
         state.isLoading = true;
       })

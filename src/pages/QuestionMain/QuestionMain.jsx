@@ -1,145 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import styled, { css } from 'styled-components';
-import { FadeAnimation, Toast } from '../../globalStyle/GlobalAnimation';
-
-const QuestionMainContainer = styled.div`
-  width: 100%;
-  height: 100vh;
-  overflow: scroll;
-  background-color: #f2f2f2;
-  border: 1px solid black;
-  padding: 1rem 30rem;
-  font-weight: 600;
-  @media screen and (max-width: 1400px) {
-    padding: 1rem 20rem;
-  }
-  @media screen and (max-width: 960px) {
-    padding: 1rem 10rem;
-  }
-  @media screen and (max-width: 768px) {
-    padding: 1rem 1.25rem;
-  }
-`;
-
-const QuestionTitle = styled.div`
-  width: fit-content;
-  border-radius: 12px;
-  border-top-left-radius: 3px;
-  background-color: white;
-  padding: 1.25rem;
-  margin-block: 1rem;
-`;
-
-const QuestionList = styled.div`
-  width: 60%;
-  border-radius: 12px;
-  border-top-left-radius: 3px;
-  background-color: white;
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  animation: ${FadeAnimation} 1s forwards;
-`;
-
-const ListBox = styled.div`
-  width: 100%;
-  border: 1px solid #eee;
-  border-radius: 9px;
-  padding: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  ${(props) => {
-    if (props.$current === props.children) {
-      return css`
-        border-color: #005f00;
-        background-color: #1dbf7e50;
-        color: #1d1d1d;
-      `;
-    }
-  }}
-
-  &:hover {
-    border-color: green;
-  }
-`;
-
-const SelectButton = styled.button`
-  width: 100%;
-  padding: 1rem;
-  border-radius: 9px;
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
-  &:hover {
-    background-color: #1e8348ad;
-    color: white;
-  }
-`;
-
-const UserAnswer = styled.div`
-  width: fit-content;
-  margin-left: auto;
-  padding: 1rem;
-  background-color: #242424;
-  color: white;
-  border-radius: 15px;
-  border-top-right-radius: 3px;
-  margin-block: 2.5rem;
-  position: relative;
-  animation: ${FadeAnimation} 0.5s ease;
-`;
-
-const CancelBtn = styled.h4`
-  width: fit-content;
-  font-weight: 500;
-  position: absolute;
-  bottom: -25px;
-  right: 0;
-  color: black;
-  cursor: pointer;
-`;
-
-const DateInput = styled.input.attrs((props) => ({
-  type: 'date'
-}))`
-  width: 100%;
-  padding: 1rem;
-  border-radius: 9px;
-  border: 1px solid #949494;
-`;
-
-const EtcInput = styled.input.attrs((props) => ({
-  type: 'text',
-  placeholder: '원하시는 장소를 입력해주세요'
-}))`
-  width: 100%;
-  padding: 1rem;
-  border-radius: 9px;
-  border: 1px solid #949494;
-`;
-
-const ConfirmToLogin = styled.div`
-  width: 100%;
-  padding: 1.25rem;
-  border-radius: 9px;
-  text-align: center;
-  border: 1px solid #1d1d1d;
-  border-radius: 9px;
-  margin-block: 9rem;
-  font-weight: 600;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #1d1d1d;
-    color: white;
-  }
-`;
+import * as St from './QuestionMainStyles';
+import { Toast } from '../../globalStyle/GlobalAnimation';
 
 export default function QuestionMain({ setProgress, count, setCount }) {
-  const navi = useNavigate();
+  // STATES
   const [current, setCurrent] = useState('');
   const [userChoice, setUserChoice] = useState({
     0: '',
@@ -147,6 +13,10 @@ export default function QuestionMain({ setProgress, count, setCount }) {
     2: ''
   });
 
+  // HOOKS
+  const navi = useNavigate();
+
+  // VARIABLES
   const questions = [
     {
       question: '어떤 사진 촬영을 원하시나요?',
@@ -162,6 +32,8 @@ export default function QuestionMain({ setProgress, count, setCount }) {
     }
   ];
 
+  // FUNCTIONS
+  // 사전조사의 값의 변화를 감지하고 state를 변경 된 값으로 업데이트
   const onChagneHandler = (e) => {
     switch (e.target.id) {
       case String(1):
@@ -175,9 +47,9 @@ export default function QuestionMain({ setProgress, count, setCount }) {
     }
   };
 
+  // 현재 선택 된 값으로 state를 업데이트 - styled-components로 전달하여 style의 조건에 사용됨.
   const onItemClick = (e) => {
     setCurrent(e.target.innerText);
-
     switch (count) {
       case 0:
         setUserChoice((prev) => ({ ...prev, 0: e.target.innerText }));
@@ -196,16 +68,20 @@ export default function QuestionMain({ setProgress, count, setCount }) {
     }
   };
 
+  // 질문 통과 || 뒤로가기 시 - count를 증가 또는 감소
   const onSubmit = () => {
     if (count < 3) {
+      // 질문의 개수보다 작으면 count + 1
       setCount(count + 1);
     }
+    // 'count === 2'는 마지막 문항까지 제출 된 것. localStorage에 선택 된 값을 저장
     if (count === 2) {
       localStorage.setItem('question', JSON.stringify(userChoice));
     }
     setProgress((prev) => prev + 33);
   };
 
+  // 로그인 함수 성공 || 실패에 해당하는 Toast가 출력
   const onLogin = () => {
     Toast.fire({
       icon: 'info',
@@ -216,89 +92,91 @@ export default function QuestionMain({ setProgress, count, setCount }) {
     });
   };
 
+  // 사전조사의 이전 문항으로
   const onCancel = () => {
     setCount(count - 1);
     setProgress((prev) => prev - 33);
   };
 
+  // MAIN RETURN
   return (
     <>
-      <QuestionMainContainer>
-        {count !== 3 && <QuestionTitle>{questions[0].question}</QuestionTitle>}
+      <St.QuestionMainContainer>
+        {count !== 3 && <St.QuestionTitle>{questions[0].question}</St.QuestionTitle>}
         {count === 0 && (
-          <QuestionList>
+          <St.QuestionList>
             {questions[0].list.map((el, i) => {
               return (
-                <ListBox key={i} onClick={onItemClick} $current={current}>
+                <St.ListBox key={i} onClick={onItemClick} $current={current}>
                   {el}
-                </ListBox>
+                </St.ListBox>
               );
             })}
-            <SelectButton onClick={onSubmit}>선택 완료</SelectButton>
-          </QuestionList>
+            <St.SelectButton onClick={onSubmit}>선택 완료</St.SelectButton>
+          </St.QuestionList>
         )}
         {userChoice[0] !== '' && (
-          <UserAnswer>
+          <St.UserAnswer>
             {userChoice[0]}
-            {count === 1 && <CancelBtn onClick={onCancel}>취소</CancelBtn>}
-          </UserAnswer>
+            {count === 1 && <St.CancelBtn onClick={onCancel}>취소</St.CancelBtn>}
+          </St.UserAnswer>
         )}
 
         {/* 2번 질문 */}
         {count === 1 && (
           <>
-            <QuestionTitle>{questions[1].question}</QuestionTitle>
-            <QuestionList>
+            <St.QuestionTitle>{questions[1].question}</St.QuestionTitle>
+            <St.QuestionList>
               {questions[1].list.map((el, i) => {
                 return (
-                  <ListBox key={i} onClick={onItemClick} $current={current}>
+                  <St.ListBox key={i} onClick={onItemClick} $current={current}>
                     {el}
-                  </ListBox>
+                  </St.ListBox>
                 );
               })}
-              {current === '원하는 날짜가 있어요' && <DateInput onChange={onChagneHandler} id={1} />}
-              <SelectButton onClick={onSubmit}>선택 완료</SelectButton>
-            </QuestionList>
+              {current === '원하는 날짜가 있어요' && <St.DateInput onChange={onChagneHandler} id={1} />}
+              <St.SelectButton onClick={onSubmit}>선택 완료</St.SelectButton>
+            </St.QuestionList>
           </>
         )}
         {userChoice[1] !== '' && (
-          <UserAnswer>
+          <St.UserAnswer>
             {userChoice[1]}
-            {count === 2 && <CancelBtn onClick={onCancel}>취소</CancelBtn>}
-          </UserAnswer>
+            {count === 2 && <St.CancelBtn onClick={onCancel}>취소</St.CancelBtn>}
+          </St.UserAnswer>
         )}
 
         {/* 3번 질문 */}
         {count === 2 && (
           <>
-            <QuestionTitle>{questions[2].question}</QuestionTitle>
-            <QuestionList>
+            <St.QuestionTitle>{questions[2].question}</St.QuestionTitle>
+            <St.QuestionList>
               {questions[2].list.map((el, i) => {
                 return (
-                  <ListBox key={i} onClick={onItemClick} $current={current}>
+                  <St.ListBox key={i} onClick={onItemClick} $current={current}>
                     {el}
-                  </ListBox>
+                  </St.ListBox>
                 );
               })}
-              {current === '기타' && <EtcInput onChange={onChagneHandler} id={2} />}
-              <SelectButton onClick={onSubmit}>선택 완료</SelectButton>
-            </QuestionList>
+              {current === '기타' && <St.EtcInput onChange={onChagneHandler} id={2} />}
+              <St.SelectButton onClick={onSubmit}>선택 완료</St.SelectButton>
+            </St.QuestionList>
           </>
         )}
         {userChoice[2] !== '' && (
-          <UserAnswer>
+          <St.UserAnswer>
             {userChoice[2]}
-            {count === 3 && <CancelBtn onClick={onCancel}>취소</CancelBtn>}
-          </UserAnswer>
+            {count === 3 && <St.CancelBtn onClick={onCancel}>취소</St.CancelBtn>}
+          </St.UserAnswer>
         )}
 
         {/*세 개의 질문에 답변하면 로그인 유도*/}
         {count === 3 && (
-          <ConfirmToLogin onClick={onLogin}>
+          <St.ConfirmToLogin onClick={onLogin}>
             <h3>로그인 후 진행하기</h3>
-          </ConfirmToLogin>
+          </St.ConfirmToLogin>
         )}
-      </QuestionMainContainer>
+      </St.QuestionMainContainer>
     </>
   );
 }

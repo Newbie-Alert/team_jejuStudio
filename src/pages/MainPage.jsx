@@ -6,10 +6,12 @@ import Header from '../components/Layout/Header';
 import Map from '../components/newMap/new/Map';
 import { FadeAnimation } from '../globalStyle/GlobalAnimation';
 
-const MapContainer = styled.div`
+const StContainer = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: center;
+  height: 100%;
+  align-items: center;
+  flex-direction: column;
+  animation: ${FadeAnimation} 0.5s forwards;
 `;
 
 export default function MainPage() {
@@ -19,8 +21,8 @@ export default function MainPage() {
 
   return (
     <div>
+      <Header />
       <StContainer>
-        <Header />
         <MainBanner />
         <Introduction />
         {/* <MapContainer>
@@ -31,11 +33,3 @@ export default function MainPage() {
     </div>
   );
 }
-
-const StContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  flex-direction: column;
-  animation: ${FadeAnimation} 0.5s forwards;
-`;
