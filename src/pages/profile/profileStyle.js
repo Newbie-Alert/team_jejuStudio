@@ -1,25 +1,34 @@
 import styled, { css } from 'styled-components';
 import { FadeAnimation } from '../../globalStyle/GlobalAnimation';
+
+
 export const Card = styled.div`
-  padding: 10px;
   background-image: url(${(props) => props.src});
-  background-position: center;
+  background-position: top;
   background-size: cover;
-  width: 195px;
-  height: 245px;
+  padding: 1rem;
+  width: 300px;
+  height:350px;
   color: black;
   display: flex;
   align-items: end;
   border-radius: 8px;
   cursor: pointer;
+  @media screen and (max-width: 700px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (max-width: 600px) {
+    height: 350px;
+  }
 `;
+
 export const CardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  align-items: center;
-  justify-items: center;
-  gap: 30px;
-  @media screen and (max-width: 700px) {
+  height: 100%;
+  gap: 1rem;
+  animation: ${FadeAnimation} 0.5s ease;
+  @media screen and (max-width: 1200px) {
     grid-template-columns: repeat(2, 1fr);
   }
   @media screen and (max-width: 600px) {
@@ -27,6 +36,7 @@ export const CardContainer = styled.div`
   }
   margin-bottom: 100px;
 `;
+
 export const TextBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -39,30 +49,35 @@ export const TextBox = styled.div`
     font-size: 12px;
   }
 `;
+
 export const Container = styled.div`
+  width: 100%;
+  padding: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 750px;
-
   background: linear-gradient(
     333deg,
     rgba(166, 230, 254, 1) 0%,
     rgba(201, 242, 255, 1) 17%,
     rgba(252, 252, 252, 1) 52%
   );
+  justify-content: center;
   animation: ${FadeAnimation} 0.5s forwards;
 `;
+
 export const Title = styled.h1`
-  margin: 80px;
   font-size: x-large;
   font-weight: 600;
+  margin-block: 1rem;
 `;
+
 export const ButtonBox = styled.div`
   display: grid;
   grid-template-columns: repeat(8, 80px);
   gap: 5px;
-  margin-bottom: 15px;
+  margin-block: 1rem;
 
   @media screen and (max-width: 700px) {
     grid-template-columns: repeat(7, 80px);
@@ -77,6 +92,7 @@ export const ButtonBox = styled.div`
     grid-template-columns: repeat(4, 80px);
   }
 `;
+
 export const CategoryBtn = styled.button`
   background-color: transparent;
   cursor: pointer;

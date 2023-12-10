@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import * as St from './MainBannerStyles';
 //이미지 슬라이더를 위한 라이브러리
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import imageData from '../imageData';
 
 function MainBanner() {
+  // STATE
+  const [currentIndex, setCurrentIndex] = useState();
+
+  // FUNCTIONS
+  // 슬라이드 렌더
   const renderSlides = imageData.map((image) => {
     return (
       <div key={image.alt}>
@@ -13,14 +18,15 @@ function MainBanner() {
       </div>
     );
   });
-  const [currentIndex, setCurrentIndex] = useState();
+
+  // 슬라이드 선택
   const handleChange = (index) => {
     setCurrentIndex(index);
   };
 
   return (
-    <MainBannerContainer>
-      <StWrapper>
+    <St.MainBannerContainer>
+      <St.StWrapper>
         <Carousel
           onChange={handleChange}
           showArrows={false}
@@ -32,21 +38,9 @@ function MainBanner() {
         >
           {renderSlides}
         </Carousel>
-      </StWrapper>
-    </MainBannerContainer>
+      </St.StWrapper>
+    </St.MainBannerContainer>
   );
 }
 
 export default MainBanner;
-
-const MainBannerContainer = styled.div`
-  width: 100%;
-  height: 80%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-`;
-const StWrapper = styled.div`
-  width: 100%;
-  height: 80%;
-`;

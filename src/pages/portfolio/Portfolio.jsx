@@ -1,60 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { __addImages, __getImages } from '../../redux/modules/imageSlice';
-import styled from 'styled-components';
-import { FadeAnimation } from '../../globalStyle/GlobalAnimation';
-
-const InfiniteContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  padding: 3rem 12rem;
-`;
-
-const InfiniteGrid = styled.div`
-  width: 100%;
-  height: 100%;
-  display: grid;
-  gap: 3rem;
-  grid-template-columns: repeat(3, 1fr);
-
-  & div:nth-child(odd) {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    top: 0rem;
-    border-radius: 9px;
-    justify-content: space-evenly;
-    animation: ${FadeAnimation} 1s forwards;
-  }
-  & div:nth-child(even) {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    border-radius: 9px;
-    bottom: 0rem;
-    animation: ${FadeAnimation} 2s forwards;
-  }
-  & img {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    border-radius: 12px;
-  }
-`;
+import * as St from './PortfolioStyles';
 
 export default function Portfolio() {
-  const dispatch = useDispatch();
+  // STATES
   const [page, setPage] = useState(1);
   const { images } = useSelector((state) => state.imageSlice);
 
+  // HOOKS
+  const dispatch = useDispatch();
+
+  // USE EFFECT
   useEffect(() => {
     try {
-      dispatch(__getImages(page));
+      dispatch(__getImages(page)); // 이미지 fetch
     } catch (err) {
       return err;
     }
   }, []);
 
+  // FUNCTIONS
+  // 스크롤 양이 끝까지 내려가면 API로 이미지 추가 호출
   const loadMoreImages = () => {
     try {
       dispatch(__addImages(page));
@@ -63,6 +30,7 @@ export default function Portfolio() {
     }
   };
 
+  // 스크롤 제어 - 스크롤양 + 창의 높이가 전체 body의 높이보다 커지면 이미지 추가 호출 실행
   const onScrollHandler = () => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
       setPage(page + 1);
@@ -73,33 +41,38 @@ export default function Portfolio() {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', onScrollHandler);
+    window.addEventListener('scroll', onScrollHandler); // 스크롤 이벤트
 
     return () => {
-      window.removeEventListener('scroll', onScrollHandler);
+      window.removeEventListener('scroll', onScrollHandler); // 스크롤 이벤트 제거
     };
   });
 
   return (
-    <InfiniteContainer>
-      <InfiniteGrid>
-        {images?.map((img) => {
-          return (
-            <div
-              key={img.id}
-              style={{
-                border: '1px solid #eee',
-                height: 'fit-content',
-                padding: '1rem',
-                backgroundColor: 'white',
-                background: `linear-gradient(220deg, rgba(0, 0, 0, 0) 85%, rgba(91, 195, 235, 1) 25%), linear-gradient(30deg, rgba(0, 0, 0, 0) 85%, rgba(91, 195, 235, 1) 25%)`
-              }}
-            >
-              <img src={img.urls.full} alt="" style={{ width: '100%' }} />
-            </div>
-          );
-        })}
-      </InfiniteGrid>
-    </InfiniteContainer>
+    <>
+      <St.InfiniteTitle>
+        <h1>Portfolio</h1>
+      </St.InfiniteTitle>
+      <St.InfiniteContainer>
+        <St.InfiniteGrid>
+          {images?.map((img) => {
+            return (
+              <div
+                key={img.id}
+                style={{
+                  border: '1px solid #eee',
+                  height: 'fit-content',
+                  padding: '1rem',
+                  backgroundColor: 'white',
+                  background: `linear-gradient(220deg, rgba(0, 0, 0, 0) 85%, rgba(91, 195, 235, 1) 25%), linear-gradient(30deg, rgba(0, 0, 0, 0) 85%, rgba(91, 195, 235, 1) 25%)`
+                }}
+              >
+                <img src={img.urls.full} alt="" style={{ width: '100%' }} />
+              </div>
+            );
+          })}
+        </St.InfiniteGrid>
+      </St.InfiniteContainer>
+    </>
   );
 }

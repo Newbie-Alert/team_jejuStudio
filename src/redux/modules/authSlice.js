@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from "../../firebase"
 
+// INITIAL STATE
 const initialState = {
   user: [],
   isLoading: false,
@@ -9,6 +10,7 @@ const initialState = {
   error: null
 }
 
+// THUNK FUNCTIONS
 export const __doSignUp = createAsyncThunk(
   "SIGN_UP",
   async (payload, thunkAPI) => {
@@ -21,7 +23,6 @@ export const __doSignUp = createAsyncThunk(
       return thunkAPI.fulfillWithValue(data)
     }
     catch (err) {
-      console.log(thunkAPI);
       return thunkAPI.rejectWithValue(err.code)
     }
   }
@@ -44,6 +45,8 @@ export const __doLogin = createAsyncThunk(
   }
 )
 
+
+// SLICE
 const authSlice = createSlice({
   name: 'authSlice',
   initialState,
@@ -51,6 +54,7 @@ const authSlice = createSlice({
 
   },
   extraReducers: (builder) => {
+    // SIGN UP
     builder
       .addCase(__doSignUp.pending, (state, action) => {
         state.isLoading = true;
@@ -66,6 +70,7 @@ const authSlice = createSlice({
         state.error = action.payload;
       })
 
+    // LOGIN
     builder
       .addCase(__doLogin.pending, (state, action) => {
         state.isLoading = true;

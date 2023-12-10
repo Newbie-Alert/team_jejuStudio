@@ -33,6 +33,8 @@ const Router = () => {
 };
 
 export default Router;
+
+// KAKAO 상담 버튼
 const StKaKaoContainer = styled.div`
   position: fixed;
   right: 60px;
