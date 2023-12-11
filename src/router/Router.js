@@ -8,6 +8,7 @@ import Login from '../pages/Login/Login';
 import Portfolio from '../pages/portfolio/Portfolio.jsx';
 import KakaoChatting from '../components/Layout/KakaoChatting';
 import Match from '../pages/Match/Match.jsx';
+import ScrollTop from '../ScrollTop.jsx';
 import styled from 'styled-components';
 
 
@@ -15,6 +16,7 @@ const Router = () => {
   return (
     <BrowserRouter>
       <GlobalStyle />
+      <ScrollTop />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/profile" element={<Profile />} />
