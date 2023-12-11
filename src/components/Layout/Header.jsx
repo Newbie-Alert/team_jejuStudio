@@ -68,9 +68,9 @@ function Header() {
             </St.ChangeStHeader>
             <St.ChangeStHeader>
               <St.ChangeStHeaderButton $isModal={isModalOn}>
-                <button>예약하기</button>
-                <button>작가소개</button>
-                <button>포트폴리오</button>
+                <button onClick={() => navigateTo('/question')}>예약하기</button>
+                <button onClick={() => navigateTo('/profile')}>작가소개</button>
+                <button onClick={() => navigateTo('/portfolio')}>포트폴리오</button>
               </St.ChangeStHeaderButton>
             </St.ChangeStHeader>
           </St.ChangeStWrapper>
