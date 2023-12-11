@@ -10,12 +10,14 @@ import KakaoChatting from '../components/Layout/KakaoChatting';
 import Match from '../pages/Match/Match.jsx';
 import styled from 'styled-components';
 import ScrollTop from '../ScrollTop.jsx';
+import Header from '../components/Layout/Header.jsx';
 
 
 const Router = () => {
   return (
     <BrowserRouter>
       <GlobalStyle />
+      <Header />
       <ScrollTop />
       <Routes>
         <Route path="/" element={<MainPage />} />

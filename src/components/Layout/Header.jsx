@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import * as St from './HeaderStyles';
 
 function Header() {
@@ -9,6 +9,7 @@ function Header() {
 
   // HOOKS
   const navi = useNavigate('/question');
+  const { pathname } = useLocation();
 
   // FUNCTIONS
   const updateScroll = () => {
@@ -17,6 +18,10 @@ function Header() {
 
   const navigateTo = (path) => {
     navi(path);
+  };
+
+  const goHome = () => {
+    navi('/');
   };
 
   const modalToggle = () => {
@@ -34,8 +39,8 @@ function Header() {
 
   // MAIN RETURN
   return (
-    <St.StContainer>
-      {scrollPosition < 300 ? (
+    <St.StContainer $path={pathname}>
+      {pathname === '/' && scrollPosition < 300 ? (
         <>
           <St.BrandTitle>
             <span>A Moment To Love</span>
@@ -43,7 +48,7 @@ function Header() {
           <St.StWrapper>
             <St.StHeader>
               <St.BrandLogo>
-                <img src="assets/LOGO3_White.png" alt="" />
+                <img onClick={goHome} src="assets/LOGO3_White.png" alt="" />
               </St.BrandLogo>
             </St.StHeader>
             <St.StHeader>
@@ -63,7 +68,7 @@ function Header() {
           <St.ChangeStWrapper>
             <St.ChangeStHeader>
               <St.ChangeBrandLogo>
-                <img src="assets/LOGO3_Blue.png" alt="" />
+                <img onClick={goHome} src="assets/LOGO3_Blue.png" alt="" />
               </St.ChangeBrandLogo>
             </St.ChangeStHeader>
             <St.ChangeStHeader>

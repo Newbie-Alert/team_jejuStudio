@@ -22,6 +22,7 @@ const HomeBtn = styled.button.attrs((props) => ({
 const MatchingContainer = styled.div`
   width: 100%;
   padding: 0.5rem 6rem;
+  margin-top: 1rem;
   background-image: linear-gradient(#fff, transparent);
   position: relative;
   @media screen and (max-width: 800px) {

@@ -145,7 +145,6 @@ export default function Match() {
           </St.ArtistGrid>
         </St.MatchingArtistSection>
       )}
-      <St.HomeBtn onClick={() => navigateHome()}>Home</St.HomeBtn>
     </St.MatchingContainer>
   );
 }

@@ -10,6 +10,7 @@ const InfiniteContainer = styled.div`
 const InfiniteTitle = styled.section`
   width: 100vw;
   padding: 1rem;
+  margin-top: 1rem;
   color: white;
   letter-spacing: 0.5rem;
   text-align: center;

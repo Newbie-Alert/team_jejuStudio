@@ -4,7 +4,7 @@ const StContainer = styled.div`
   display: flex;
   justify-content: center;
   z-index: 1000;
-  position: fixed;
+  position: ${props => props.$path !== '/' ? 'static' : 'fixed'};
   top: 0;
   left: 0;
   width: 100%;
@@ -155,7 +155,6 @@ const ChangeStWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
   align-items: center;
   width: 100%;
   height: 120%;

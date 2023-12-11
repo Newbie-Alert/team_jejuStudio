@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Introduction from '../components/home/Introduction';
 import MainBanner from '../components/home/MainBanner';
-import Header from '../components/Layout/Header';
 import Map from '../components/newMap/new/Map';
 import { FadeAnimation } from '../globalStyle/GlobalAnimation';
 
@@ -21,7 +20,7 @@ export default function MainPage() {
 
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <StContainer>
         <MainBanner />
         <Introduction />
