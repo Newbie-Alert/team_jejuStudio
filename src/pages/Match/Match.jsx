@@ -37,7 +37,6 @@ export default function Match() {
 
     for (let i = 0; i < artist.length; i++) {
       // 8번 진행
-      console.log(matchPoint);
       artist[i].area === userDataArr[2] ? (matchPoint += 1) : (matchPoint += 0); // 지역이 일치하면 point 1점
       for (let j = 0; j < artist[i].category.length; j++) {
         // 아티스트의 카테고리 요소 수 만큼
@@ -51,11 +50,6 @@ export default function Match() {
   // 작가 상세페이지로 이동
   const navigateToDetail = (artistId) => {
     navi(`/detail/${artistId}`);
-  };
-
-  // 메인으로 이동
-  const navigateHome = () => {
-    navi('/', { replace: true });
   };
 
   // 3초 딜레이 후 작가 리스트 등장
