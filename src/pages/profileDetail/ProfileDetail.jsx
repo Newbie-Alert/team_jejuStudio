@@ -51,7 +51,7 @@ export const Styled_Slide = styled(Slider)`
   .slick-next:before {
     font-size: 30px;
     opacity: 0.5;
-    color: white;
+    color: #c9f2ff;
   }
 
   & img {
