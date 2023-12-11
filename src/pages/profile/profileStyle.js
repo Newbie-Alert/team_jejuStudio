@@ -34,6 +34,7 @@ export const CardContainer = styled.div`
   @media screen and (max-width: 600px) {
     grid-template-columns: repeat(1, 1fr);
   }
+  margin-bottom: 100px;
 `;
 
 export const TextBox = styled.div`
