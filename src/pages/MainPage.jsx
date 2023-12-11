@@ -27,7 +27,7 @@ export default function MainPage() {
         {/* <MapContainer>
           <KAKAO />
         </MapContainer> */}
-        {/* <Map /> */}
+        <Map />
       </StContainer>
     </div>
   );
